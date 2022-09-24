@@ -1,0 +1,4 @@
+.sbt/
+target/
+project/project
+spark-warehouse/
