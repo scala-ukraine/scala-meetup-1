@@ -4,7 +4,6 @@ from diagrams.aws.database import Dynamodb
 from diagrams.onprem.queue import Kafka
 from diagrams.onprem.analytics import Spark
 from diagrams.elastic.elasticsearch import Elasticsearch
-from diagrams.programming.flowchart import Database
 from diagrams.oci.network import LoadBalancer
 from diagrams.onprem.container import Docker
 from diagrams.onprem.analytics import Tableau
@@ -35,7 +34,7 @@ if __name__ == "__main__":
                 silver_bucket3 = S3("silver bucket 3")
             with Cluster("Gold", graph_attr={'bgcolor': '#FFDF00'}):
                 gold_bucket = S3("golden bucket")
-                db = Database("database")
+                db = Dynamodb("database")
                 es = Elasticsearch("elastic")
                 visual = Tableau("visualization")
 
