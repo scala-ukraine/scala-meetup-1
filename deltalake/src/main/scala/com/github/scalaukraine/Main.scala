@@ -182,9 +182,8 @@ object Main {
     pause("Look at change feed")
 
     feed
-      .where($"_change_type".isin("insert", "update_postimage", "delete"))
-      .groupBy($"id", $"_change_type")
-      .agg(count($"_change_type").as("count"))
+      .groupBy($"_change_type")
+      .count()
       .show(truncate = false)
 
     pause("Changes stats")
@@ -246,10 +245,11 @@ object Main {
   private def structTypeOf[A: Encoder]: StructType = implicitly[Encoder[A]].schema
 
   private def pause(message: String): Unit =
-    scala.io.StdIn.readLine(message + "\n")
+    if (scala.io.StdIn.readLine(message + "\n") == "exit")
+      throw new RuntimeException("Alarm, exit!")
 
   private def triggerDeltaRegistrationInSpark()(implicit spark: SparkSession): Unit =
     withVideoStats { _ =>
-      println("Regisetred delta table in spark catalog")
+      println("Registered delta table in spark catalog")
     }
 }
