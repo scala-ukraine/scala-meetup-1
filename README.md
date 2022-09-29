@@ -8,3 +8,4 @@
   - [Детальніше про ACID гарантії](https://docs.delta.io/latest/concurrency-control.html)
   - [Constraints](https://docs.delta.io/latest/delta-constraints.html)
   - [Про оптимізації](https://docs.delta.io/latest/optimizations-oss.html)
+  - [Data utility](https://docs.delta.io/latest/delta-utility.html)
